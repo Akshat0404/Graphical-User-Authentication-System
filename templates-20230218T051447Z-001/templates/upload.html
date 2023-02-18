@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>test</title>
+    </head>
+    <body>
+        <form action="{{ url_for('upload') }}" method="POST">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="images">Select 3 images</label>
+                <select multiple name="images" class="form-control" id="images">
+                    {% for image in images %}
+                        <option value="{{ image }}">{{ image }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        <script src="" async defer></script>
+    </body>
+</html>

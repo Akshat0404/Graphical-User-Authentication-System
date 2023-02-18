@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<style>
+    html{
+        background-color:black;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        .main{
+          margin: auto;
+          width: 500px;
+          display:grid;
+          grid-template-columns: repeat(3,1fr);
+          grid-template-rows: repeat(3,1fr);
+          grid-gap:10px
+        }
+        img{
+          height: 146px;
+          width: 140px;
+          border-radius:12px;
+        }
+        span{
+          type:submit;
+          position: relative;
+          display: inline-flex;
+          width: 180px;
+          height: 55px;
+          margin: 0 15px;
+          perspective: 1000px;
+        }
+        span button{
+          font-size: 19px;
+          letter-spacing: 1px;
+          transform-style: preserve-3d;
+          transform: translateZ(-25px);
+          transition: transform .25s;
+          font-family: 'Montserrat', sans-serif;
+          
+        }
+        span button:before,
+        span button:after{
+          position: absolute;
+          content: "SUBMIT";
+          height: 55px;
+          width: 180px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px solid;
+          box-sizing: border-box;
+          border-radius: 5px;
+          border-color:red;
+        }
+        span button:before{
+          color: white;
+          background: #000;
+          transform: rotateY(0deg) translateZ(25px);
+        }
+        span button:after{
+          color: white;
+          transform: rotateX(90deg) translateZ(25px);
+        }
+        span button:hover{
+          transform: translateZ(-25px) rotateX(-90deg);
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <body>
+      {% load static %}
+          <div class="main">
+              <img class="i" src="{% static i1 %}" onclick="fun('{{i1}}')">
+              <img class="i" src="{% static i2 %}" onclick="fun('{{i2}}')">
+              <img class="i" src="{% static i3 %}" onclick="fun('{{i3}}')">
+              <img class="i" src="{% static i4 %}" onclick="fun('{{i4}}')">
+              <img class="i" src="{% static i5 %}" onclick="fun('{{i5}}')">
+              <img class="i" src="{% static i6 %}" onclick="fun('{{i6}}')">
+              <img class="i" src="{% static i7 %}" onclick="fun('{{i7}}')">
+              <img class="i" src="{% static i8 %}" onclick="fun('{{i8}}')">
+              <img class="i" src="{% static i9 %}" onclick="fun('{{i9}}')">
+              <br>
+          </div>
+          <div class="text"></div>
+        <span><button style="background-color:black;border:none" type="submit" name="mkc"></button></span>
+    <script type="text/javascript">
+      function fun(a){
+          $(".i").click(function(){
+            $(this).css({"opacity":".5"});
+          });
+          $(".text").append(a+" ");
+          $("button").click(function(){
+            var d=$(".text").text();
+            $.post("", {data:d},function(res){
+            });
+          });
+      }
+    </script>
+</body>
+</html>
